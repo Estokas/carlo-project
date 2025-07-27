@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Confirm Checkout</h2>
+
+<mat-dialog-content>
+  <p><strong>Selected Items:</strong></p>
+  <ul>
+    <li *ngFor="let item of data.items">
+      {{ item.productName }} - ₱{{ item.price }} × {{ item.quantity }}
+    </li>
+  </ul>
+
+  <p><strong>Total: ₱{{ getTotal() }}</strong></p>
+
+  <mat-form-field appearance="fill" style="width: 100%; margin-top: 16px;">
+  <mat-label>Select Payment Method</mat-label>
+  <mat-select [(ngModel)]="paymentMethod" required>
+    <mat-option value="" disabled>Select method</mat-option>
+    <mat-option value="gcash">GCash</mat-option>
+    <mat-option value="credit">Credit Card</mat-option>
+    <mat-option value="debit">Debit Card</mat-option>
+    <mat-option value="cod">Cash on Delivery</mat-option>
+  </mat-select>
+</mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="confirm()" [disabled]="!paymentMethod">
+    Confirm
+  </button>
+</mat-dialog-actions>

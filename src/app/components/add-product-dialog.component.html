@@ -1,0 +1,35 @@
+<div style="padding: 25px; min-width: 400px; max-width: 500px; width: 100%;">
+  <h2 mat-dialog-title style="margin-bottom: 16px; font-size: 20px;">Add Product/Service</h2>
+
+  <form [formGroup]="form" (ngSubmit)="save()" style="display: flex; flex-direction: column;">
+
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="productName" style="font-size: 14px; height: 36px;">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" style="font-size: 14px; height: 36px;">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="price" style="font-size: 14px; height: 36px;">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type" style="font-size: 14px;">
+        <mat-option value="product">Product</mat-option>
+        <mat-option value="service">Service</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div style="display: flex; gap: 8px; margin-top: 16px;">
+      <button mat-button (click)="cancel()" style="font-size: 13px;">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" style="font-size: 13px;">Save</button>
+    </div>
+
+  </form>
+</div>

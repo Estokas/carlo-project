@@ -1,0 +1,137 @@
+<div style="padding: 16px; max-width: 100%; box-sizing: border-box;">
+  <div style="text-align: right; margin-bottom: 24px;">
+    <button mat-raised-button color="accent" (click)="openAddDialog()">
+      + Add Product / Service
+    </button>
+  </div>
+
+  <h2 style="margin-top: 0;">🖥️ Products</h2>
+  <div
+    style="
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      width: 100%;
+      box-sizing: border-box;
+    "
+  >
+    <ng-container *ngFor="let item of products">
+      <mat-card
+        *ngIf="item.type === 'product'"
+        style="
+          padding: 16px;
+          background-color: #f3f7ff;
+          border-radius: 12px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <mat-card-title style="font-weight: 600; font-size: 18px; color: #1a237e;">
+          {{ item.productName }}
+        </mat-card-title>
+        <mat-card-content>
+          <p>{{ item.description }}</p>
+          <p><strong>₱{{ item.price }}</strong></p>
+        </mat-card-content>
+        <mat-card-actions style="display: flex; justify-content: flex-end; gap: 8px;">
+  <button
+    mat-button
+    color="primary"
+    (click)="addToCart(item)"
+    style="color: black; border: 1px solid transparent;"
+    onmouseover="this.style.border='1px solid black'"
+    onmouseout="this.style.border='1px solid transparent'"
+  >
+    Add to Cart
+  </button>
+
+  <button
+    mat-button
+    color="accent"
+    (click)="openAddDialog(item)"
+    style="color: black; border: 1px solid transparent;"
+    onmouseover="this.style.border='1px solid black'"
+    onmouseout="this.style.border='1px solid transparent'"
+  >
+    Edit
+  </button>
+
+  <button
+    mat-button
+    color="warn"
+    (click)="deleteProduct(item.id)"
+    style="color: black; border: 1px solid transparent;"
+    onmouseover="this.style.border='1px solid black'"
+    onmouseout="this.style.border='1px solid transparent'"
+  >
+    Delete
+  </button>
+</mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
+
+  <h2 style="margin-top: 40px;">🛠️ Services</h2>
+  <div
+    style="
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      width: 100%;
+      box-sizing: border-box;
+    "
+  >
+    <ng-container *ngFor="let item of products">
+      <mat-card
+        *ngIf="item.type === 'service'"
+        style="
+          padding: 16px;
+          background-color: #f3f7ff;
+          border-radius: 12px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <mat-card-title style="font-weight: 600; font-size: 18px; color: #1a237e;">
+          {{ item.productName }}
+        </mat-card-title>
+        <mat-card-content>
+          <p>{{ item.description }}</p>
+          <p><strong>₱{{ item.price }}</strong></p>
+        </mat-card-content>
+        <mat-card-actions style="display: flex; justify-content: flex-end; gap: 8px;">
+  <button
+    mat-button
+    color="primary"
+    (click)="addToCart(item)"
+    style="color: black; border: 1px solid transparent;"
+    onmouseover="this.style.border='1px solid black'"
+    onmouseout="this.style.border='1px solid transparent'"
+  >
+    Add to Cart
+  </button>
+
+  <button
+    mat-button
+    color="accent"
+    (click)="openAddDialog(item)"
+    style="color: black; border: 1px solid transparent;"
+    onmouseover="this.style.border='1px solid black'"
+    onmouseout="this.style.border='1px solid transparent'"
+  >
+    Edit
+  </button>
+
+  <button
+    mat-button
+    color="warn"
+    (click)="deleteProduct(item.id)"
+    style="color: black; border: 1px solid transparent;"
+    onmouseover="this.style.border='1px solid black'"
+    onmouseout="this.style.border='1px solid transparent'"
+  >
+    Delete
+  </button>
+</mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>

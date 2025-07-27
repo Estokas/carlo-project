@@ -1,0 +1,15 @@
+<app-main-toolbar></app-main-toolbar>
+<mat-card *ngIf="cartItems.length">
+  <form [formGroup]="form" (ngSubmit)="submitOrder()">
+    <h3>Total: ₱{{ total }}</h3>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Payment Method</mat-label>
+      <mat-select formControlName="paymentType">
+        <mat-option value="gcash">GCash</mat-option>
+        <mat-option value="debit">Debit Card</mat-option>
+        <mat-option value="credit">Credit Card</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Submit Order</button>
+  </form>
+</mat-card>

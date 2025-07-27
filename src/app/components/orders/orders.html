@@ -1,0 +1,50 @@
+<app-main-toolbar></app-main-toolbar>
+
+<h2 style="padding: 16px;">🧾 Order History</h2>
+
+<ng-container *ngIf="orders.length > 0; else noOrders">
+  <mat-card *ngFor="let order of orders" class="order-card" style="margin: 16px; padding: 16px; background-color: #f0f4ff;">
+    <mat-card-title style="padding-bottom: 8px;">
+      Order placed on {{ order.createdAt?.toDate() | date: 'medium' }}
+    </mat-card-title>
+
+    <mat-card-subtitle style="padding-bottom: 12px;">
+  <h4 style="color: #000000; margin: 0;">Payment Method: {{ order.paymentMethod | titlecase }}</h4>
+</mat-card-subtitle>
+
+    <table class="order-table" style="width: 100%; border-collapse: collapse; padding: 8px;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 8px;">Product</th>
+          <th style="text-align: left; padding: 8px;">Type</th>
+          <th style="text-align: right; padding: 8px;">Price (₱)</th>
+          <th style="text-align: center; padding: 8px;">Qty</th>
+          <th style="text-align: right; padding: 8px;">Subtotal (₱)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of order.items">
+          <td style="padding: 8px;">{{ item.productName }}</td>
+          <td style="padding: 8px;">{{ item.type }}</td>
+          <td style="text-align: right; padding: 8px;">{{ item.price }}</td>
+          <td style="text-align: center; padding: 8px;">{{ item.quantity }}</td>
+          <td style="text-align: right; padding: 8px;">
+            {{ item.price * (item.quantity || 1) }}
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" style="text-align: right; padding: 8px;"><strong>Total:</strong></td>
+          <td style="text-align: right; padding: 8px;"><strong>
+            ₱{{ getOrderTotal(order.items) }}
+          </strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </mat-card>
+</ng-container>
+
+<ng-template #noOrders>
+  <p style="padding: 24px;">No orders found.</p>
+</ng-template>

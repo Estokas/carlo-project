@@ -1,0 +1,11 @@
+.empty-cart-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  padding-bottom: 20px;
+}
